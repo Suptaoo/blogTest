@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.PostMapper">
+  <resultMap id="BaseResultMap" type="com.example.domain.Post">
+    <!--@mbg.generated-->
+    <!--@Table post-->
+    <id column="post_id" jdbcType="INTEGER" property="postId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="created" jdbcType="VARCHAR" property="created" />
+    <result column="last_modified" jdbcType="VARCHAR" property="lastModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    post_id, title, content, user_id, created, last_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from post
+    where post_id = #{postId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from post
+    where post_id = #{postId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="post_id" keyProperty="postId" parameterType="com.example.domain.Post" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into post (title, content, user_id, 
+      created, last_modified)
+    values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{created,jdbcType=VARCHAR}, #{lastModified,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="post_id" keyProperty="postId" parameterType="com.example.domain.Post" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into post
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="lastModified != null">
+        last_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModified != null">
+        #{lastModified,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.domain.Post">
+    <!--@mbg.generated-->
+    update post
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModified != null">
+        last_modified = #{lastModified,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.domain.Post">
+    <!--@mbg.generated-->
+    update post
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      created = #{created,jdbcType=VARCHAR},
+      last_modified = #{lastModified,jdbcType=VARCHAR}
+    where post_id = #{postId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectPostByUserId" resultMap="BaseResultMap">
+    select * from  post  where  user_id = #{userId}
+  </select>
+</mapper>
