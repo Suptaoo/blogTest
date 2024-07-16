@@ -1,3 +1,4 @@
 HELP.md
-请求会经过拦截器拦截,之后对用户信息进行验证 详见JwtInterceptor
-api加上@AuthAccess注解之后会跳过拦截器
+ORM框架为MyBatis
+系统设置了拦截器,所有请求会经过拦截器拦截,之后对用户信息进行验证 详见JwtInterceptor
+api加上@AuthAccess注解之后会跳过拦截器验证
