@@ -4,7 +4,6 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.jwt.JWTException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
-import co
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.config.AuthAccess;
 import com.example.domain.User;
